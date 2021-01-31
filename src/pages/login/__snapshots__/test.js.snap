@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPage renders correctly 1`] = `
+<WithStyles(ForwardRef(Grid))
+  className="makeStyles-root-1"
+  component="main"
+  container={true}
+>
+  <WithStyles(ForwardRef(Button))
+    color="primary"
+    id="forgotPasswordButton"
+    onClick={[Function]}
+  >
+    Login With Spotify
+  </WithStyles(ForwardRef(Button))>
+</WithStyles(ForwardRef(Grid))>
+`;

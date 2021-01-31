@@ -1,0 +1,80 @@
+{
+  "name": "spotify-weather",
+  "version": "1.0.0",
+  "description": "Playlists suggested according to weather in your region",
+  "author": "Iago R. Regiani",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "analyze": "npm run build && source-map-explorer 'build/static/js/*.js'",
+    "clean": "rm -rf ./coverage && rm -rf ./build  && rm -rf ./node_modules",
+    "local": "cross-env NODE_ENV=local webpack-dev-server --config ./config/webpack.js --progress",
+    "webpack": "webpack --config ./config/webpack.js --debug --display-error-details",
+    "build": "npm run clean && npm ci && npm run test && npm run webpack",
+    "lint": "eslint --config .eslintrc.js --ext .jsx,.js ./src",
+    "test": "npm run lint && jest --config ./config/jest.config.js --coverage",
+    "test:update": "jest --config ./config/jest.config.js --coverage --updateSnapshot",
+    "test:no-cov": "npm run lint && jest --config ./config/jest.config.js"
+  },
+  "dependencies": {
+    "@material-ui/core": "4.9.12",
+    "@material-ui/icons": "4.9.1",
+    "axios": "^0.21.1",
+    "babel-jest": "26.0.1",
+    "babel-loader": "8.1.0",
+    "babel-plugin-transform-regenerator": "6.26.0",
+    "cross-env": "7.0.2",
+    "css-loader": "3.5.3",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.2",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb": "18.1.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "3.1.3",
+    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react-hooks": "2.5.1",
+    "file-loader": "6.0.0",
+    "html-webpack-plugin": "4.3.0",
+    "jest": "26.0.1",
+    "react": "16.13.1",
+    "react-addons-test-utils": "15.6.2",
+    "react-dom": "16.13.1",
+    "react-redux": "7.2.0",
+    "react-router-dom": "5.1.2",
+    "redux": "4.0.5",
+    "redux-logger": "3.0.6",
+    "redux-saga": "1.1.3",
+    "regenerator-runtime": "0.13.5",
+    "style-loader": "1.2.1",
+    "terser-webpack-plugin": "3.0.6",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "7.9.6",
+    "@babel/preset-react": "7.9.4",
+    "enzyme-to-json": "3.4.4",
+    "eslint-loader": "4.0.2",
+    "jest-css-modules-transform": "4.0.0",
+    "source-map-explorer": "2.4.2",
+    "webpack-dev-server": "3.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IRegiani/spotify-weather.git"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

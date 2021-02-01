@@ -1,13 +1,17 @@
 import { post, get } from './requests';
 
-jest.mock('axios');
+const mockResponse = { status: 'dummy-status', data: 'dummy-data', headers: 'dummy-headers' };
+
+jest.mock('axios', () => ({ request: () => mockResponse }));
+
+const dummyUrl = new URL('https://www.google.com');
 
 describe('Request Utils', () => {
   test('post', async () => {
-    await post();
+    await post(dummyUrl);
   });
 
   test('post', async () => {
-    await get();
+    await get(dummyUrl);
   });
 });

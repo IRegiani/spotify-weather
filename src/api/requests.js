@@ -4,7 +4,6 @@ const createRequest = async (url, method, data, Authorization) => {
   const requestObject = {
     method,
     url,
-    params: {}, // check this
     data,
     headers: {
       'Content-type': 'application/json',
@@ -17,7 +16,7 @@ const createRequest = async (url, method, data, Authorization) => {
     return { status: res.status, data: res.data, headers: res.headers };
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.err('ERROR in http request: ', JSON.stringify(err));
+    console.error('ERROR in http request: ', JSON.stringify(err));
     throw err;
   }
 };

@@ -13,18 +13,16 @@ module.exports = {
   ],
   coverageThreshold: {
     global: {
-      branches: 60,
-      functions: 60,
-      lines: 60,
-      statements: 60,
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80,
     },
   },
   rootDir: '../',
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleDirectories: ['<rootDir>/node_modules'],
   setupFilesAfterEnv: ['<rootDir>/config/jest.setup.js'],
-  // notify: true,
-  // notifyMode: 'failure',
   resetMocks: true,
   verbose: true,
   transform: {

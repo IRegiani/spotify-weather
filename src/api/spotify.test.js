@@ -15,6 +15,7 @@ describe('Spotify API', () => {
     const mockAuth = 'dummy-auth';
 
     const res = await loadUserProfile(mockAuth);
+
     expect(res).toEqual();
     expect(get).toHaveBeenCalledWith(expectedUrl, `Bearer ${mockAuth}`);
   });

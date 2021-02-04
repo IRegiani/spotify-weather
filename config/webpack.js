@@ -43,7 +43,7 @@ module.exports = {
     new webpack.EnvironmentPlugin(['SPOTIFY_CLIENT_ID', 'OPEN_WEATHER_KEY']),
   ],
   optimization: {
-    minimize: true,
+    minimize: mode !== 'development',
     minimizer: [new TerserPlugin()],
   },
   devServer: {

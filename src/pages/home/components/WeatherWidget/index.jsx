@@ -9,8 +9,7 @@ import { useStyles } from './style';
 // TODO: Skeleton is not appearing replacing city name while loading
 // TODO: Handle when a city is not found
 // TODO: Input controlled state warning
-// WIP: Handle when a city typed again, the value previous value is being maintained
-
+// WIP: Add tooltip
 
 const generateCityComponent = (weatherInfo, classes, cityOverride, setCityOverride, setWeatherInfo) => {
   const city = weatherInfo === null ? 'Location Blocked' : cityOverride;

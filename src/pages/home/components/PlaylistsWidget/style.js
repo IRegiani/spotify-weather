@@ -2,16 +2,19 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles({
   root: {
-    minWidth: 275,
-    maxWidth: 300,
-    maxHeight: 250,
-    textAlign: 'center',
+    minWidth: '250px',
+    maxWidth: '650px',
+    maxHeight: '350px',
+    textAlign: 'start',
     margin: '20px',
     display: 'grid',
-    justifyContent: 'center',
+    justifyContent: 'start',
+    overflowY: 'auto',
   },
   title: {
-    fontSize: 22,
+    fontSize: 18,
+    textTransform: 'capitalize',
+
   },
   description: {
     textTransform: 'capitalize',
@@ -24,8 +27,7 @@ export const useStyles = makeStyles({
     margin: '8px auto',
     height: '1.7rem',
   },
-  input: {
-    fontSize: '18px',
-    marginTop: '5px',
+  inline: {
+    display: 'inline',
   },
 });

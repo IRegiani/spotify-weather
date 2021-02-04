@@ -1,10 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-const localEnv = process.env.NODE_ENV === 'local' && 'development';
-const mode = localEnv || 'production';
-// const gitCommit = require('child_process').execSync('git rev-parse HEAD').toString().trim();
+const mode = process.env.NODE_ENV === 'local' ? 'development' : 'production';
+const gitCommit = require('child_process').execSync('git rev-parse HEAD').toString().trim();
 
 const rootPath = path.resolve(__dirname, '../');
 const srcPath = path.resolve(rootPath, 'src');
@@ -12,7 +12,7 @@ const srcPath = path.resolve(rootPath, 'src');
 /* eslint-disable no-console */
 console.log('');
 console.log('BUILDING!');
-// console.log(`mode: ${mode} commit: ${gitCommit}`);
+console.log(`mode: ${mode} commit: ${gitCommit}`);
 console.log('');
 /* eslint-enable no-console */
 
@@ -40,6 +40,7 @@ module.exports = {
       filename: 'index.html',
       // favicon: path.join(srcPath, path.join('static', '')),
     }),
+    new webpack.EnvironmentPlugin(['SPOTIFY_CLIENT_ID', 'OPEN_WEATHER_KEY']),
   ],
   optimization: {
     minimize: true,

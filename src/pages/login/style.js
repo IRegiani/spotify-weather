@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { Colors } from '../../constants/colors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,13 +32,6 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-  },
-  GoogleLogin: {
-    color: Colors.RED,
-    backgroundColor: Colors.WHITE,
-    '&:hover': {
-      backgroundColor: Colors.WHITE,
-    },
   },
 }));
 

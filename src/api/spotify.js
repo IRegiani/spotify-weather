@@ -1,11 +1,15 @@
 import { getConfig } from '../../config';
-import { post } from './requests';
+import { get } from './requests';
 
-const login = (email, password) => {
-  const url = `${getConfig().SERVICE_URL}/login`;
-  return post(url, { email, password });
+const buildAuthString = (token) => `Bearer ${token}`;
+
+const loadUserProfile = async (auth) => {
+  const url = getConfig().SPOTIFY_URL;
+  url.addPath('me');
+  const { data } = await get(url, buildAuthString(auth));
+  return data;
 };
 
 export {
-  login,
+  loadUserProfile,
 };

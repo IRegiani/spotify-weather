@@ -1,17 +1,21 @@
-import { login } from './spotify';
+import { loadUserProfile } from './spotify';
 
 import { getConfig } from '../../config';
-import { post } from './requests';
+import { get } from './requests';
 
 jest.mock('./requests');
 
 describe('Spotify API', () => {
-  test('login - calls route correctly with proper params', () => {
-    const expectedUrl = `${getConfig().SERVICE_URL}/login`;
-    const password = 'password';
-    const email = 'email';
+  const dummyResponse = { name: 'name', weather: {}, main: {} };
 
-    login(email, password);
-    expect(post).toHaveBeenCalledWith(expectedUrl, { email, password });
+  test('loadUserProfile - calls route correctly with proper params', async () => {
+    get.mockImplementation(() => dummyResponse);
+    const expectedUrl = getConfig().SPOTIFY_URL;
+    expectedUrl.addPath('me');
+    const mockAuth = 'dummy-auth';
+
+    const res = await loadUserProfile(mockAuth);
+    expect(res).toEqual();
+    expect(get).toHaveBeenCalledWith(expectedUrl, `Bearer ${mockAuth}`);
   });
 });

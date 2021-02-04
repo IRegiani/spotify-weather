@@ -6,8 +6,8 @@ import { get } from './requests';
 jest.mock('./requests');
 
 describe('OpenWeather API', () => {
-  const dummyResponse = { name: 'name', weather: {}, main: {} };
-  const expectedResponse = { ...dummyResponse.weather[0], ...dummyResponse.main };
+  const dummyResponse = { data: { name: 'name', weather: {}, main: {} } };
+  const expectedResponse = { ...dummyResponse.data.weather[0], ...dummyResponse.data.main, name: dummyResponse.data.name };
 
   test('getWeatherByCity', async () => {
     get.mockImplementation(() => dummyResponse);
@@ -22,6 +22,6 @@ describe('OpenWeather API', () => {
     const res = await getWeatherByGeoLocation({ coords: {} });
 
     // expect(get).toHaveBeenCalledWith(expectedUrl);
-    expect(res).toEqual({ ...expectedResponse, name: dummyResponse.name });
+    expect(res).toEqual(expectedResponse);
   });
 });

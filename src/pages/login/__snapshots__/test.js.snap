@@ -8,10 +8,10 @@ exports[`LoginPage renders correctly 1`] = `
 >
   <WithStyles(ForwardRef(Button))
     color="primary"
-    id="forgotPasswordButton"
+    id="authButton"
     onClick={[Function]}
   >
-    Login With Spotify
+    Connect With Spotify
   </WithStyles(ForwardRef(Button))>
 </WithStyles(ForwardRef(Grid))>
 `;

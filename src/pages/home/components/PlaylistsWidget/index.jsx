@@ -10,7 +10,7 @@ import { useStyles } from './style';
 // TODO: Improve suggested playlists
 // TODO: Add switch to allow autoplay across playlists
 
-const fetchData = async (accessToken, weatherDescription, setPlaylists, setLoading, selectList) => {
+export const fetchData = async (accessToken, weatherDescription, setPlaylists, setLoading, selectList) => {
   const playlists = await loadPlaylistsBySearch(accessToken, weatherDescription);
   setPlaylists(playlists);
   setLoading(false);
@@ -18,7 +18,7 @@ const fetchData = async (accessToken, weatherDescription, setPlaylists, setLoadi
   selectList({ id, name, description, image: images && images[0].url });
 };
 
-const skeletonCard = (
+export const skeletonCard = (
   <>
     <Skeleton animation="wave" variant="text" width={150} style={{ margin: 'auto' }} />
     <List>
@@ -38,7 +38,7 @@ const skeletonCard = (
   </>
 );
 
-const generateListItem = (selectList, listSize, classes) => ({ images, description, name, id } = {}, index) => {
+export const generateListItem = (selectList, listSize, classes) => ({ images, description, name, id } = {}, index) => {
   const descriptionComponent = (
     <Typography
       component="span"

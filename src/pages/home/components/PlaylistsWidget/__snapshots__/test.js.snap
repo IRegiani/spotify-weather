@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Playlist Widget renders correctly 1`] = `
+<WithStyles(ForwardRef(Card))
+  className="makeStyles-root-1"
+  variant="outlined"
+>
+  <WithStyles(ForwardRef(CardContent))>
+    <WithStyles(ForwardRef(Skeleton))
+      animation="wave"
+      style={
+        Object {
+          "margin": "auto",
+        }
+      }
+      variant="text"
+      width={150}
+    />
+    <WithStyles(ForwardRef(List))>
+      <WithStyles(ForwardRef(ListItem))
+        alignItems="flex-start"
+      >
+        <WithStyles(ForwardRef(Skeleton))
+          animation="wave"
+          height={40}
+          variant="circle"
+          width={40}
+        />
+        <div
+          style={
+            Object {
+              "marginLeft": "15px",
+            }
+          }
+        >
+          <WithStyles(ForwardRef(Skeleton))
+            animation="wave"
+            variant="text"
+            width={350}
+          />
+          <WithStyles(ForwardRef(Skeleton))
+            animation="wave"
+            variant="text"
+            width={350}
+          />
+        </div>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(Divider)) />
+      <WithStyles(ForwardRef(ListItem))
+        alignItems="flex-start"
+      >
+        <WithStyles(ForwardRef(Skeleton))
+          animation="wave"
+          height={40}
+          variant="circle"
+          width={40}
+        />
+        <div
+          style={
+            Object {
+              "marginLeft": "15px",
+            }
+          }
+        >
+          <WithStyles(ForwardRef(Skeleton))
+            animation="wave"
+            variant="text"
+            width={350}
+          />
+          <WithStyles(ForwardRef(Skeleton))
+            animation="wave"
+            variant="text"
+            width={350}
+          />
+        </div>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(Divider)) />
+      <WithStyles(ForwardRef(ListItem))
+        alignItems="flex-start"
+      >
+        <WithStyles(ForwardRef(Skeleton))
+          animation="wave"
+          height={40}
+          variant="circle"
+          width={40}
+        />
+        <div
+          style={
+            Object {
+              "marginLeft": "15px",
+            }
+          }
+        >
+          <WithStyles(ForwardRef(Skeleton))
+            animation="wave"
+            variant="text"
+            width={350}
+          />
+          <WithStyles(ForwardRef(Skeleton))
+            animation="wave"
+            variant="text"
+            width={350}
+          />
+        </div>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(Divider)) />
+    </WithStyles(ForwardRef(List))>
+  </WithStyles(ForwardRef(CardContent))>
+</WithStyles(ForwardRef(Card))>
+`;
+
+exports[`Playlist Widget renders loading skeletons correctly 1`] = `
+<React.Fragment>
+  <WithStyles(ForwardRef(Skeleton))
+    animation="wave"
+    style={
+      Object {
+        "margin": "auto",
+      }
+    }
+    variant="text"
+    width={150}
+  />
+  <WithStyles(ForwardRef(List))>
+    <React.Fragment>
+      <WithStyles(ForwardRef(ListItem))
+        alignItems="flex-start"
+      >
+        <WithStyles(ForwardRef(Skeleton))
+          animation="wave"
+          height={40}
+          variant="circle"
+          width={40}
+        />
+        <div
+          style={
+            Object {
+              "marginLeft": "15px",
+            }
+          }
+        >
+          <WithStyles(ForwardRef(Skeleton))
+            animation="wave"
+            variant="text"
+            width={350}
+          />
+          <WithStyles(ForwardRef(Skeleton))
+            animation="wave"
+            variant="text"
+            width={350}
+          />
+        </div>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(Divider)) />
+    </React.Fragment>
+    <React.Fragment>
+      <WithStyles(ForwardRef(ListItem))
+        alignItems="flex-start"
+      >
+        <WithStyles(ForwardRef(Skeleton))
+          animation="wave"
+          height={40}
+          variant="circle"
+          width={40}
+        />
+        <div
+          style={
+            Object {
+              "marginLeft": "15px",
+            }
+          }
+        >
+          <WithStyles(ForwardRef(Skeleton))
+            animation="wave"
+            variant="text"
+            width={350}
+          />
+          <WithStyles(ForwardRef(Skeleton))
+            animation="wave"
+            variant="text"
+            width={350}
+          />
+        </div>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(Divider)) />
+    </React.Fragment>
+    <React.Fragment>
+      <WithStyles(ForwardRef(ListItem))
+        alignItems="flex-start"
+      >
+        <WithStyles(ForwardRef(Skeleton))
+          animation="wave"
+          height={40}
+          variant="circle"
+          width={40}
+        />
+        <div
+          style={
+            Object {
+              "marginLeft": "15px",
+            }
+          }
+        >
+          <WithStyles(ForwardRef(Skeleton))
+            animation="wave"
+            variant="text"
+            width={350}
+          />
+          <WithStyles(ForwardRef(Skeleton))
+            animation="wave"
+            variant="text"
+            width={350}
+          />
+        </div>
+      </WithStyles(ForwardRef(ListItem))>
+      <WithStyles(ForwardRef(Divider)) />
+    </React.Fragment>
+  </WithStyles(ForwardRef(List))>
+</React.Fragment>
+`;

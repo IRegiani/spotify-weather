@@ -12,6 +12,7 @@ import PlayerWidget from './components/PlayerWidget';
 import CustomPlaylist from './components/CustomPlaylist';
 
 // import { useStyles } from './style';
+// TODO: Add logout and burn token + cookie
 
 const TOKEN_KEY = 'TOKEN_KEY';
 
@@ -47,7 +48,7 @@ const Home = () => {
 
   const [userProfile, setUserProfile] = useState({});
   const [weatherInfo, setWeatherInfo] = useState({});
-  const [customPlaylist, setCustomPlaylist] = useState([]);
+  const [customPlaylist, setCustomPlaylist] = useState([]); // this could be a Set
   const [currentPlaylist, setCurrentPlaylist] = useState({});
   const accessToken = getAccessToken(location) || sessionStorage.getItem(TOKEN_KEY);
 

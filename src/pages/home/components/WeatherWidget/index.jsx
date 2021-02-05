@@ -10,7 +10,7 @@ import { useStyles } from './style';
 // TODO: Handle when a city is not found
 // TODO: Input controlled state warning
 
-const generateCityComponent = (weatherInfo, classes, cityOverride, setCityOverride, setWeatherInfo) => {
+export const generateCityComponent = (weatherInfo, classes, cityOverride, setCityOverride, setWeatherInfo) => {
   const city = weatherInfo === null ? 'Location Blocked' : cityOverride;
   const onKeyPress = ({ key }) => {
     if (key === 'Enter') {
@@ -19,7 +19,7 @@ const generateCityComponent = (weatherInfo, classes, cityOverride, setCityOverri
     }
   };
 
-  if (weatherInfo) {
+  if (weatherInfo) { // WIP: check this condition
     return (
       <Tooltip title="Click to choose another city" leaveDelay={500} placement="right" arrow>
         <InputBase

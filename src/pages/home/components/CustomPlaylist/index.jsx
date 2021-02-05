@@ -15,7 +15,7 @@ export const savePlaylist = async (accessToken, description, playlistName, setLo
   disableButton(true);
 };
 
-const generateListItem = (listSize, { removeTrack }) => (track, index) => {
+export const generateListItem = (listSize, { removeTrack }) => (track, index) => {
   const secondaryComponent = `${track.album.name} | ${track.artists.map((artist, inx) => (track.artists.length - 1 === inx ? artist.name : `${artist.name} - `))}`;
 
   return (

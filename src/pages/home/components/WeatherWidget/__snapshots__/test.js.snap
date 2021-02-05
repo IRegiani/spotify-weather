@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Weather Widget renders city text field 1`] = `
+<WithStyles(ForwardRef(Tooltip))
+  arrow={true}
+  leaveDelay={500}
+  placement="right"
+  title="Click to choose another city"
+>
+  <WithStyles(ForwardRef(InputBase))
+    inputProps={
+      Object {
+        "aria-label": "naked",
+        "style": Object {
+          "textAlign": "center",
+        },
+      }
+    }
+    onChange={[Function]}
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    type="text"
+  />
+</WithStyles(ForwardRef(Tooltip))>
+`;
+
+exports[`Weather Widget renders city text field 2`] = `
+<WithStyles(ForwardRef(Tooltip))
+  arrow={true}
+  leaveDelay={500}
+  placement="right"
+  title="Click to choose another city"
+>
+  <WithStyles(ForwardRef(InputBase))
+    inputProps={
+      Object {
+        "aria-label": "naked",
+        "style": Object {
+          "textAlign": "center",
+        },
+      }
+    }
+    onChange={[Function]}
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    type="text"
+  />
+</WithStyles(ForwardRef(Tooltip))>
+`;
+
+exports[`Weather Widget renders correctly 1`] = `
+<WithStyles(ForwardRef(Card))
+  className="makeStyles-root-1"
+  variant="outlined"
+>
+  <WithStyles(ForwardRef(CardContent))>
+    <WithStyles(ForwardRef(Skeleton))
+      className="makeStyles-skeletonCircle-4"
+      height={45}
+      variant="circle"
+      width={45}
+    />
+    <WithStyles(ForwardRef(Skeleton))
+      className="makeStyles-skeletonText-5"
+      variant="text"
+      width={15}
+    />
+    <WithStyles(ForwardRef(Skeleton))
+      className="makeStyles-skeletonText-5"
+      variant="text"
+      width={55}
+    />
+    <WithStyles(ForwardRef(Tooltip))
+      arrow={true}
+      leaveDelay={500}
+      placement="right"
+      title="Click to choose another city"
+    >
+      <WithStyles(ForwardRef(InputBase))
+        className="makeStyles-input-6"
+        inputProps={
+          Object {
+            "aria-label": "naked",
+            "style": Object {
+              "textAlign": "center",
+            },
+          }
+        }
+        onChange={[Function]}
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        type="text"
+      />
+    </WithStyles(ForwardRef(Tooltip))>
+  </WithStyles(ForwardRef(CardContent))>
+</WithStyles(ForwardRef(Card))>
+`;

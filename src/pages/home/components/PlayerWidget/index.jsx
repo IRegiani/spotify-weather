@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Typography, List, ListItem, Button, ListItemText, Divider, LinearProgress } from '@material-ui/core';
@@ -46,14 +45,14 @@ const generateTrackList = (tracks, currentTrack, setCurrentTrack, trackStatus, {
   return (
     <List style={{ minHeight: '200px', overflowY: 'auto', maxHeight: '500px', gridTemplateRow: '2' }}>
       {tracks.map(((track, index) => (
-        <>
+        <div key={track.id}>
           <ListItem alignItems="flex-start" button onClick={() => setCurrentTrack({ ...track, index })} key={track.id}>
             <ListItemText primary={track.name} secondary={convertMilis(track.duration_ms)} />
             <Button onClick={onPlaylistClick(track)} startIcon={startIcon(track)}>{buttonText(track)}</Button>
           </ListItem>
           { index === currentTrack.index && trackStatus ? <LinearProgress /> : null}
           { index === tracks.length - 1 && index !== currentTrack.index ? null : <Divider />}
-        </>
+        </div>
       )))}
     </List>
   );
@@ -62,6 +61,7 @@ const generateTrackList = (tracks, currentTrack, setCurrentTrack, trackStatus, {
 const PlayerWidget = ({ currentPlaylist, accessToken, updateCustomPlaylist, customPlaylist }) => {
   const { image, name, description, id } = currentPlaylist;
   const [trackStatus, setTrackStatus] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [isLoading, setLoading] = useState(true);
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [currentTrack, setCurrentTrack] = useState({});

@@ -3,12 +3,10 @@ import { createLogger as mockedCreateLogger } from 'redux-logger';
 
 import { configureStore } from './index';
 
-const mockedRun = jest.fn();
-const mockedCreateSagaMiddleware = { run: mockedRun };
 jest.mock('redux');
 jest.mock('redux-logger');
 
-describe.skip('STATE - Store', () => {
+describe('STATE - Store', () => {
   const devToolsComposer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
   const mockedComposerReturn = 'mockedComposerReturn';
@@ -44,7 +42,6 @@ describe.skip('STATE - Store', () => {
     expect(store).toEqual(mockedStoreReturn);
     expect(mockedComposer).toHaveBeenCalledWith(mockedApplyMiddlewareReturn);
     expect(mockedCreateLogger).toHaveBeenCalledWith({ collapsed: true });
-    expect(mockedApplyMiddleware).toHaveBeenCalledWith(mockedCreateSagaMiddleware, mockLogger);
 
     process.env.NODE_ENV = originalEnv;
   });
@@ -63,7 +60,6 @@ describe.skip('STATE - Store', () => {
     expect(store).toEqual(mockedStoreReturn);
     expect(mockedComposer).toHaveBeenCalledWith(mockedApplyMiddlewareReturn);
     expect(mockedCreateLogger).toHaveBeenCalledWith({ collapsed: true });
-    expect(mockedApplyMiddleware).toHaveBeenCalledWith(mockedCreateSagaMiddleware, mockLogger);
 
     process.env.NODE_ENV = originalEnv;
   });
@@ -76,8 +72,6 @@ describe.skip('STATE - Store', () => {
     const store = configureStore();
 
     expect(store).toEqual(mockedStoreReturn);
-    expect(mockedCompose).toHaveBeenCalledWith(mockedApplyMiddlewareReturn);
-    expect(mockedApplyMiddleware).toHaveBeenCalledWith(mockedCreateSagaMiddleware);
     expect(mockedCreateLogger).not.toHaveBeenCalled();
     expect(mockedComposer).not.toHaveBeenCalled();
   });

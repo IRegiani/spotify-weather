@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomPlaylist Widget renders correctly 1`] = `
+<WithStyles(ForwardRef(Card))
+  className="makeStyles-root-1"
+  variant="outlined"
+>
+  <WithStyles(ForwardRef(CardContent))>
+    <WithStyles(ForwardRef(Tooltip))
+      arrow={true}
+      leaveDelay={500}
+      placement="right"
+      title="Rename your playlist!"
+    >
+      <WithStyles(ForwardRef(InputBase))
+        inputProps={
+          Object {
+            "aria-label": "naked",
+            "style": Object {
+              "textAlign": "center",
+            },
+          }
+        }
+        onChange={[Function]}
+        onClick={[Function]}
+        type="text"
+        value="My Playlist"
+      />
+    </WithStyles(ForwardRef(Tooltip))>
+    <WithStyles(ForwardRef(List)) />
+    <WithStyles(ForwardRef(Button))
+      disabled={false}
+      onClick={[Function]}
+      startIcon={<Memo(SaveIcon) />}
+    >
+      Save Playlist
+    </WithStyles(ForwardRef(Button))>
+  </WithStyles(ForwardRef(CardContent))>
+</WithStyles(ForwardRef(Card))>
+`;

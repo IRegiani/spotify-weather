@@ -15,7 +15,7 @@ In order to run locally, beware to set the following environment variables:
 - `OPEN_WEATHER_KEY`: Create an accounnt at [OpenWeather](https://home.openweathermap.org/api_keys) and get an API key 
 - `SPOTIFY_CLIENT_ID`: Register an application at [Spotify](https://developer.spotify.com/dashboard/applications) and get the `Client id`
 
-You can also run the container image: `docker run iregiani/spotify-weather -e SPOTIFY_CLIENT_ID=ID -e OPEN_WEATHER_KEY=KEY -p 9000:9000`
+You can also run the container image: `docker run -e SPOTIFY_CLIENT_ID=ID -e OPEN_WEATHER_KEY=KEY -p 9000:9000 iregiani/spotify-weather`
 
 All components should have Unit Tests, the Action requires all tests passing to allow a PR or deploy. So, `npm run test` is mandatory.
 

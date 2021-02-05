@@ -2,6 +2,8 @@ FROM node:erbium-alpine
 
 WORKDIR /usr/src/app
 
+RUN apk update && apk upgrade && apk add git
+
 COPY package*.json ./
 
 RUN npm install

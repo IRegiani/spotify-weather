@@ -8,11 +8,14 @@ import { useStyles } from './style';
 
 // TODO: Divider while loading should have left margin
 // TODO: Improve suggested playlists
+// TODO: Add switch to allow autoplay across playlists
 
-const fetchData = async (accessToken, description, setPlaylists, setLoading) => {
-  const playlists = await loadPlaylistsBySearch(accessToken, description);
+const fetchData = async (accessToken, weatherDescription, setPlaylists, setLoading, selectList) => {
+  const playlists = await loadPlaylistsBySearch(accessToken, weatherDescription);
   setPlaylists(playlists);
   setLoading(false);
+  const { images, description, name, id } = playlists[0];
+  selectList({ id, name, description, image: images && images[0].url });
 };
 
 const skeletonCard = (
@@ -67,7 +70,7 @@ const PlaylistsWidget = ({ weatherInfo, setCurrentPlaylist, accessToken }) => {
 
   useEffect(() => {
     if (description) {
-      fetchData(accessToken, description, setPlaylists, setLoading);
+      fetchData(accessToken, description, setPlaylists, setLoading, setCurrentPlaylist, playlists[0]);
     }
   }, [weatherInfo]);
 

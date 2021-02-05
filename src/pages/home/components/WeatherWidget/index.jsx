@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardContent, Typography, InputBase } from '@material-ui/core';
+import { Card, CardContent, Typography, InputBase, Tooltip } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 import { getWeatherByCity } from '../../../../api/openWeather';
@@ -9,7 +9,6 @@ import { useStyles } from './style';
 // TODO: Skeleton is not appearing replacing city name while loading
 // TODO: Handle when a city is not found
 // TODO: Input controlled state warning
-// WIP: Add tooltip
 
 const generateCityComponent = (weatherInfo, classes, cityOverride, setCityOverride, setWeatherInfo) => {
   const city = weatherInfo === null ? 'Location Blocked' : cityOverride;
@@ -22,15 +21,17 @@ const generateCityComponent = (weatherInfo, classes, cityOverride, setCityOverri
 
   if (weatherInfo) {
     return (
-      <InputBase
-        className={classes.input}
-        value={city}
-        onChange={({ target: { value } }) => setCityOverride(value)}
-        onKeyPress={onKeyPress}
-        onClick={() => setCityOverride('')}
-        inputProps={{ 'aria-label': 'naked', style: { textAlign: 'center' } }}
-        type="text"
-      />
+      <Tooltip title="Click to choose another city" leaveDelay={500} placement="right" arrow>
+        <InputBase
+          className={classes.input}
+          value={city}
+          onChange={({ target: { value } }) => setCityOverride(value)}
+          onKeyPress={onKeyPress}
+          onClick={() => setCityOverride('')}
+          inputProps={{ 'aria-label': 'naked', style: { textAlign: 'center' } }}
+          type="text"
+        />
+      </Tooltip>
     );
   }
 

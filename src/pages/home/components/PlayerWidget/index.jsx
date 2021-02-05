@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Typography, List, ListItem, Button, ListItemText, Divider } from '@material-ui/core';
+import { Card, Typography, List, ListItem, Button, ListItemText, Divider, LinearProgress } from '@material-ui/core';
+import PlaylistAddOutlinedIcon from '@material-ui/icons/PlaylistAddOutlined';
+import RemoveCircleOutlineOutlinedIcon from '@material-ui/icons/RemoveCircleOutlineOutlined';
 
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
@@ -11,8 +13,9 @@ import { useStyles } from './style';
 
 // TODO: Add loading skeletons
 // TODO: Paginate items
-// TODO: add fav playlist heart
 // TODO: check convertMilis func
+// TODO: playing track should always remain visible
+// TODO: Add heart icon to fav playlist
 
 const convertMilis = (s) => {
   const pad = (n) => `00 + ${n}`.slice(-2);
@@ -35,20 +38,21 @@ const fetchData = async (accessToken, id, setPlaylistTracks, setCurrentTrack, se
   setLoading(false);
 };
 
-const generateTrackList = (tracks, currentTrack, setCurrentTrack, trackStatus, updateCustomPlaylist, customPlaylist) => {
-  const onPlaylistClick = (track) => () => { console.log('Adding track', track.id); }; // previous status should be checked
+const generateTrackList = (tracks, currentTrack, setCurrentTrack, trackStatus, { removeTrack, addTrack }, customPlaylist) => {
+  const onPlaylistClick = (track) => (e) => { e.stopPropagation(); if (customPlaylist.find((t) => t === track)) removeTrack(track); else addTrack(track); };
+  const startIcon = (track) => (customPlaylist.find((t) => t === track) ? <RemoveCircleOutlineOutlinedIcon /> : <PlaylistAddOutlinedIcon />);
+  const buttonText = (track) => (customPlaylist.find((t) => t === track) ? 'Remove from your playlist' : 'Add to your playlist');
 
-  console.log('tracks', tracks);
   return (
     <List style={{ minHeight: '200px', overflowY: 'auto', maxHeight: '500px', gridTemplateRow: '2' }}>
       {tracks.map(((track, index) => (
         <>
           <ListItem alignItems="flex-start" button onClick={() => setCurrentTrack({ ...track, index })} key={track.id}>
-            {/* WIP: add playing / pause icon, using trackStatus & currentTrack index */}
             <ListItemText primary={track.name} secondary={convertMilis(track.duration_ms)} />
-            <Button onClick={onPlaylistClick(track)}>Add to your playlist</Button>
+            <Button onClick={onPlaylistClick(track)} startIcon={startIcon(track)}>{buttonText(track)}</Button>
           </ListItem>
-          { index === tracks.length - 1 ? null : <Divider />}
+          { index === currentTrack.index && trackStatus ? <LinearProgress /> : null}
+          { index === tracks.length - 1 && index !== currentTrack.index ? null : <Divider />}
         </>
       )))}
     </List>
@@ -110,10 +114,10 @@ const PlayerWidget = ({ currentPlaylist, accessToken, updateCustomPlaylist, cust
               {currentTrack.artists.map((artist, index) => (currentTrack.artists.length - 1 === index ? artist.name : `${artist.name} - `))}
             </Typography>
           )}
-          onPlay={() => setTrackStatus({ [currentTrack.id]: 'playing' })}
-          onPause={() => setTrackStatus({ [currentTrack.id]: 'stopped' })}
+          onPlay={() => setTrackStatus(true)}
+          onPause={() => setTrackStatus(false)}
           onEnded={nextTrack}
-          // onClickNext={nextTrack}
+          // eslint-disable-next-line no-console
           onError={console.error}
           style={{ gridTemplateRow: '3', maxWidth: '550px' }}
         />

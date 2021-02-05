@@ -1,5 +1,5 @@
 import { getConfig } from '../../config';
-import { get } from './requests';
+import { get, post } from './requests';
 
 // TODO: Create a wrapper around those calls to redirect catch 401 || 400 and redirect, like on Home
 // TODO: Handle country from userProfile
@@ -52,12 +52,33 @@ const loadTracksFromPlaylist = async (auth, playlistId) => {
   return tracks;
 };
 
-// fav plalist
-// add track
-// remove track
+const createPlaylist = async (auth, userId, name, description, tracks, isPrivate = true, isCollaborative = false) => {
+  const createPlaylistUrl = getConfig().SPOTIFY_URL;
+  createPlaylistUrl.addPath(`users/${userId}/playlists`);
+
+  const payload = {
+    name,
+    public: !isPrivate,
+    collaborative: isCollaborative, // can only be collaborative is public is false
+    description,
+  };
+
+  const { status, ...other } = await post(createPlaylistUrl, payload, buildAuthString(auth));
+  if (status !== (201 || 200)) throw new Error('Invalid playlist data');
+
+  const { data: { id } } = other;
+
+  const addItemsUrl = getConfig().SPOTIFY_URL;
+  addItemsUrl.addPath(`playlists/${id}/tracks`);
+
+  const tracksPayload = { uris: tracks.map((track) => track.uri) };
+
+  return post(addItemsUrl, tracksPayload, buildAuthString(auth));
+};
 
 export {
   loadUserProfile,
   loadPlaylistsBySearch,
   loadTracksFromPlaylist,
+  createPlaylist,
 };

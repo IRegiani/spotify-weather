@@ -9,6 +9,7 @@ import { getWeatherByGeoLocation } from '../../api/openWeather';
 import WeatherWidget from './components/WeatherWidget';
 import PlaylistWidget from './components/PlaylistsWidget';
 import PlayerWidget from './components/PlayerWidget';
+import CustomPlaylist from './components/CustomPlaylist';
 
 // import { useStyles } from './style';
 
@@ -46,22 +47,33 @@ const Home = () => {
 
   const [userProfile, setUserProfile] = useState({});
   const [weatherInfo, setWeatherInfo] = useState({});
-  // eslint-disable-next-line no-unused-vars
+  const [customPlaylist, setCustomPlaylist] = useState([]);
   const [currentPlaylist, setCurrentPlaylist] = useState({});
   const accessToken = getAccessToken(location) || sessionStorage.getItem(TOKEN_KEY);
+
+  const updateCustomPlaylist = {
+    removeTrack: ({ id }) => setCustomPlaylist((previousList) => {
+      const index = previousList.findIndex((item) => item.id === id);
+      const newList = [...previousList];
+      newList.splice(index, 1);
+      return index > -1 ? newList : [...previousList];
+    }),
+    addTrack: (track) => setCustomPlaylist((previousList) => [...previousList, track]),
+  };
 
   useEffect(() => {
     fetchData(accessToken, history, setUserProfile, setWeatherInfo);
   }, []);
 
-  console.log('userProfile', userProfile);
-
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '2', gridTemplateRows: '1' }}>
-      <div style={{ gridColumn: '1' }}><PlayerWidget currentPlaylist={currentPlaylist} accessToken={accessToken} updateCustomPlaylist={{}} /></div>
+      <div style={{ gridColumn: '1' }}>
+        <PlayerWidget currentPlaylist={currentPlaylist} accessToken={accessToken} updateCustomPlaylist={updateCustomPlaylist} customPlaylist={customPlaylist} />
+      </div>
       <div style={{ gridColumn: '2' }}>
+        <CustomPlaylist accessToken={accessToken} updatePlaylist={updateCustomPlaylist} playlist={customPlaylist} userProfile={userProfile} />
         <WeatherWidget weatherInfo={weatherInfo} setWeatherInfo={setWeatherInfo} />
-        <PlaylistWidget weatherInfo={weatherInfo} setCurrentPlaylist={setCurrentPlaylist} accessToken={accessToken} style={{ backgroundColor: 'blue' }} />
+        <PlaylistWidget weatherInfo={weatherInfo} setCurrentPlaylist={setCurrentPlaylist} accessToken={accessToken} />
       </div>
     </div>
   );

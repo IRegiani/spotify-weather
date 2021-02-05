@@ -38,7 +38,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'index.html'),
       filename: 'index.html',
-      // favicon: path.join(srcPath, path.join('static', '')),
     }),
     new webpack.EnvironmentPlugin(['SPOTIFY_CLIENT_ID', 'OPEN_WEATHER_KEY']),
   ],

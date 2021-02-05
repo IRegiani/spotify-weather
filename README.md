@@ -6,6 +6,8 @@
 
 You can access the [demo](https://iregiani.github.io/spotify-weather/), and your location will be requested. You can also manually change it by clicking on the city.
 
+You can create a new private playlist by picking tracks from the suggested playlists and save to listen later.
+
 Alternatively you can run it locally, but beware to set the following environment variables:
 - `OPEN_WEATHER_KEY`: Create an accounnt at [OpenWeather](https://home.openweathermap.org/api_keys) and get an API key 
 - `SPOTIFY_CLIENT_ID`: Register an application at [Spotify](https://developer.spotify.com/dashboard/applications) and get the `Client id`
